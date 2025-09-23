@@ -1506,6 +1506,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI-Foreground-Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5078429665817891427, guid: 9f22c9ea2299497418fb7880d03af3fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5453467868375567135, guid: 9f22c9ea2299497418fb7880d03af3fa, type: 3}
       propertyPath: nextLevelButton
       value: 

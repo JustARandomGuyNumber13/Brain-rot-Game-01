@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 public class Game_Manager : MonoBehaviour
 {
     public static Game_Manager instance;
-    [SerializeField] ViewportHandler viewportHandler;
 
-    public SO_GameInfo Info;
     public Camera cam;
     public bool GameStart { get; set; }
 
@@ -26,8 +24,6 @@ public class Game_Manager : MonoBehaviour
 
         Height = cam.orthographicSize * 2f;
         Width = cam.orthographicSize * 2f * cam.aspect;
-
-        //viewportHandler.UnitsSize = Info.LevelSize;
     }
 
     private void Start()
@@ -39,6 +35,7 @@ public class Game_Manager : MonoBehaviour
     {
         OnGameEnd?.Invoke();
         Time.timeScale = 0;
+        Data_Manager.instance.NextLevel();
     }
     public void StartGame()
     {
@@ -58,7 +55,7 @@ public class Game_Manager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         int curScene = SceneManager.GetActiveScene().buildIndex;
-        int nextScene = curScene + 1;
+        int nextScene = curScene + 1;        
 
         if (nextScene < SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(nextScene);

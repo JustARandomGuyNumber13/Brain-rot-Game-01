@@ -7,7 +7,8 @@ public class Projectile_Spawner : MonoBehaviour
     [SerializeField] Transform target;
 
     Queue<Projectile> pool = new Queue<Projectile>();
-    Game_Manager manager;
+    Data_Manager data;
+    [SerializeField] Projectile prefab;
 
     private void Awake()
     {
@@ -15,7 +16,8 @@ public class Projectile_Spawner : MonoBehaviour
     }
     private void Start()
     {
-        manager = Game_Manager.instance;
+        data = Data_Manager.instance;
+        prefab = data.GetCurrentProjectile();
         enabled = false;
     }
 
@@ -26,7 +28,7 @@ public class Projectile_Spawner : MonoBehaviour
         if (pool.Count > 0)
             projectile = pool.Dequeue();
         else
-            projectile = Instantiate(manager.Info.CurrentProjectile);
+            projectile = Instantiate(prefab);
 
         projectile.target = target;
         projectile.transform.position = spawnPos;
